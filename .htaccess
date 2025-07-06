@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Handle API requests
+RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+
+# Handle all other requests by serving the React app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ client/build/index.html [QSA,L]
